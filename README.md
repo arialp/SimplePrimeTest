@@ -9,3 +9,7 @@ We can disregard forms where `i = {0,2,3,4}` because they are divisible by 2 or 
 Note that prime numbers don't follow a general rule, this is already efficient and accurate without diving into more complex algorithms.
 
 _I'm still learning C, I'm sure there are much better algorithms out there._
+
+Sources for the informations: 
+[Primality test](https://en.wikipedia.org/wiki/Primality_test#Simple_methods),
+[Trial division](https://en.wikipedia.org/wiki/Trial_division)
