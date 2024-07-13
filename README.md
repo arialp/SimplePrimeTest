@@ -118,6 +118,19 @@ Finds all prime divisors of a given number.
 
 - `long long *`: Array of prime divisors. Must be freed after use.
 
+## Changelog
+**1.1**: 
+Moved the implementation to its own function named `isPrime`.
+
+- Added new functions:
+	- `findPrimeDivisors(long long n, size_t *returnSize)`: 	Finds the prime factors of an integer n, and returns these factors in an array.
+	- `resizeArray(long long *arr, size_t newSize)`: 		Resizes a given dynamic array using `realloc`. The new size, **as number of entries**, must be passed to this function.
+	- `valueInArray(long long val, long long *arr, size_t size)`: 	Checks if a given value is in an array. This function is simply a way to declutter.
+- Massively sped up the entire program. Don't ask how its black magic.
+- Massively expanded the range. Previously, an input of 9 decimal digits was the practical limit for the `isPrime` function. This has been extended to 19 decimal digits.
+
+**1.0**: First commit.
+
 ## License
 
 This project is licensed under the MIT License.
