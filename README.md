@@ -1,13 +1,14 @@
 # Simple Prime Test
 
 This C project provides utilities to determine if a number is prime and to find all prime divisors of a given number.
-The project is designed to handle integers up to `2^63 - 1` (the maximum value for `long long` in C).
+The project is designed to handle integers up to `2^64 - 1` (the maximum value for `unsigned long long` in C).
 
 It uses a trial division method of primality test to find the smallest prime factor of a number, or all prime factors of
 a number, if the user wishes so.
 
 ~~This program does have memory leak(s). I'll fix them after I learn using valgrind.~~ Fixed in 1.2.
 
+This program does compile and run on Linux and Windows.
 ## Features
 
 - **Primality Test**: Check if a given number is prime.
@@ -23,7 +24,7 @@ a number, if the user wishes so.
 To compile the project, use the following command:
 
 ```sh
-gcc -g -std=c99 main.c -o main
+gcc -g -std=c99 main.c -o primetest -lm
 ```
 
 ## Usage
@@ -31,7 +32,7 @@ gcc -g -std=c99 main.c -o main
 Run the compiled executable and follow the on-screen prompts to select an operation:
 
 ```sh
-.\main
+.\primetest
 ```
 
 ### Operations
