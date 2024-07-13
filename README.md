@@ -1,11 +1,12 @@
-
 # Simple Prime Test
 
-This C project provides utilities to determine if a number is prime and to find all prime divisors of a given number. The project is designed to handle integers up to `2^63 - 1` (the maximum value for `long long` in C).
+This C project provides utilities to determine if a number is prime and to find all prime divisors of a given number.
+The project is designed to handle integers up to `2^63 - 1` (the maximum value for `long long` in C).
 
-It uses a trial division method of primality test to find the smallest prime factor of a number, or all prime factors of a number, if the user wishes so.
+It uses a trial division method of primality test to find the smallest prime factor of a number, or all prime factors of
+a number, if the user wishes so.
 
-This program does have memory leak(s). I'll fix them after I learn using valgrind.
+~~This program does have memory leak(s). I'll fix them after I learn using valgrind.~~ Fixed in 1.2.
 
 ## Features
 
@@ -37,7 +38,8 @@ Run the compiled executable and follow the on-screen prompts to select an operat
 
 1. **Primality Test**: Enter a number to check if it is prime.
 2. **Prime Factorization**: Enter a number to list its prime factors.
-3. **Quit**: Exit the program.
+3. **Benchmark all functions**: Benchmarks `isPrime` and `findAllDivisors` using a very simple iterative method.
+4. **Quit**: Exit the program.
 
 ### Example
 
@@ -45,7 +47,8 @@ Run the compiled executable and follow the on-screen prompts to select an operat
 Select an operation:
     1) Primality Test
     2) Find all prime divisors of a number
-    3) Quit
+    3) Benchmark all functions
+    4) Quit
 1
 Enter a number to check if it is prime: 29
 29 is prime
@@ -55,7 +58,8 @@ Enter a number to check if it is prime: 29
 Select an operation:
     1) Primality Test
     2) Find all prime divisors of a number
-    3) Quit
+    3) Benchmark all functions
+    4) Quit
 2
 Enter a number to list its prime factors: 28
 28 = 2*2*7
@@ -63,14 +67,27 @@ Enter a number to list its prime factors: 28
 
 ## Functions
 
+### removeNonNumeric
+
+Removes all non numeric characters in a given array.
+
+**Input**:
+
+- `const char *in`: Array to check.
+- `size_t size`: Used for creating the return array of the same size as `in`.
+
+**Output**:
+
+- `char *out`: An array with only the numeric elements of `in`, with the same size.
+
 ### valueInArray
 
 Determines whether a given value exists in an array.
 
 **Input**:
 
-- `long long val`: Value to check.
-- `const long long *arr`: Array to check.
+- `unsigned long long val`: Value to check.
+- `const unsigned long long *arr`: Array to check.
 - `size_t size`: Size of the array.
 
 **Output**:
@@ -83,12 +100,12 @@ Resizes a dynamic array to a new size.
 
 **Input**:
 
-- `long long *arr`: Array to resize.
+- `unsigned long long *arr`: Array to resize.
 - `size_t newSize`: New size of the array.
 
 **Output**:
 
-- `long long *`: Resized array or `NULL` if reallocation fails.
+- `unsigned long long *tmp`: Resized array or `NULL` if reallocation fails.
 
 ### isPrime
 
@@ -96,11 +113,11 @@ Finds the smallest prime divisor of a given number to determine its primality.
 
 **Input**:
 
-- `long long n`: Number to check.
+- `unsigned long long n`: Number to check.
 
 **Output**:
 
-- `long long`:
+- `unsigned long long`:
 	- `0` if `n < 2`.
 	- `1` if `n` is prime.
 	- Smallest prime divisor of `n` if it is not prime.
@@ -119,8 +136,29 @@ Finds all prime divisors of a given number.
 - `long long *`: Array of prime divisors. Must be freed after use.
 
 ## Changelog
-**1.1**: 
-Moved the implementation to its own function named `isPrime`.
+## **1.2**:
+
+- Increased the range from `2^63-1` to `2^64-1` by using an unsigned integer type. This is possible since negative numbers cannot be negative.
+- Fixed all memory leaks (hopefully).
+  - valguard output after testing all operations:
+  - ```
+    HEAP SUMMARY:
+    in use at exit: 0 bytes in 0 blocks
+    total heap usage: 12,600,127 allocs, 12,600,127 frees, 1,270,410,275 bytes allocated
+    All heap blocks were freed -- no leaks are possible
+    ```
+- Added a new function: `removeNonNumeric(char *in, size_t size)`:
+  - Removes all non numeric characters in a given char array. And returns a new char array pointer.
+  - Returned array must be freed after use.
+- Added a very basic and primitive benchmark operation. I might improve this later.
+- Increased reliability by adding checks for a valid user input. The program will now:
+  - Warn the user if the selection choice is invalid.
+  - Remove any non numeric characters from the input for the selected operation.
+  - Ignore the negative sign.
+
+## **1.1**: 
+
+- Moved the implementation to its own function named `isPrime`.
 
 - Added new functions:
 	- `findPrimeDivisors(long long n, size_t *returnSize)`: 	Finds the prime factors of an integer n, and returns these factors in an array.
@@ -129,9 +167,9 @@ Moved the implementation to its own function named `isPrime`.
 - Massively sped up the entire program. Don't ask how its black magic.
 - Massively expanded the range. Previously, an input of 9 decimal digits was the practical limit for the `isPrime` function. This has been extended to 19 decimal digits.
 
-**1.0**: First commit.
+## **1.0**: 
+- First commit.
 
 ## License
 
 This project is licensed under the MIT License.
-
