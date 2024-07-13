@@ -1,3 +1,0 @@
-C:/Users/arial/CLionProjects/SimplePrimeTest/cmake-build-debug/CMakeFiles/SimplePrimeTest.dir
-C:/Users/arial/CLionProjects/SimplePrimeTest/cmake-build-debug/CMakeFiles/edit_cache.dir
-C:/Users/arial/CLionProjects/SimplePrimeTest/cmake-build-debug/CMakeFiles/rebuild_cache.dir
