@@ -24,7 +24,7 @@ This program does compile and run on Linux and Windows.
 To compile the project, use the following command:
 
 ```sh
-gcc -std=c99 -g -lm -Werror -Wall main.c -o primetest
+gcc -std=c99 -g -Werror -Wall main.c -o primetest -lm
 ```
 
 ## Usage
