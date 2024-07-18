@@ -139,7 +139,7 @@ Finds all prime divisors of a given number.
 ## Changelog
 ## **1.2**:
 
-- Increased the range from `2^63-1` to `2^64-1` by using an unsigned integer type. This is possible since negative numbers cannot be negative.
+- Increased the range from `2^63-1` to `2^64-1` by using an unsigned integer type. This is possible since prime numbers cannot be negative.
 - Fixed all memory leaks (hopefully).
   - valguard output after testing all operations:
   - ```
